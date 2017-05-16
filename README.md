@@ -1,58 +1,11 @@
-[<img src="https://travis-ci.org/tinify/tinify-php.svg?branch=master" alt="Build Status">](https://travis-ci.org/tinify/tinify-php)
+[[tinify? &input=`[+image+]` &options=`w=150,h=76,m=cover`]] 
 
-# Tinify API client for PHP
+The method(m) describes the way your image will be resized. The following methods are available:
 
-PHP client for the Tinify API, used for [TinyPNG](https://tinypng.com) and [TinyJPG](https://tinyjpg.com). Tinify compresses your images intelligently. Read more at [http://tinify.com](http://tinify.com).
+scale: Scales the image down proportionally. You must provide either a target width or a target height, but not both. The scaled image will have exactly the provided width or height.
 
-## Documentation
+fit:  Scales the image down proportionally so that it fits within the given dimensions. You must provide both a width and a height. The scaled image will not exceed either of these dimensions.
 
-[Go to the documentation for the PHP client](https://tinypng.com/developers/reference/php).
+cover: Scales the image proportionally and crops it if necessary so that the result has exactly the given dimensions. You must provide both a width and a height. Which parts of the image are cropped away is determined automatically. An intelligent algorithm determines the most important areas and leaves these intact. 
 
-## Installation
-
-Install the API client with Composer. Add this to your `composer.json`:
-
-```json
-{
-  "require": {
-    "tinify/tinify": "*"
-  }
-}
-```
-
-Then install with:
-
-```
-composer install
-```
-
-Use autoloading to make the client available in PHP:
-
-```php
-require_once("vendor/autoload.php");
-```
-
-## Usage
-
-```php
-Tinify\setKey("YOUR_API_KEY");
-Tinify\fromFile("unoptimized.png")->toFile("optimized.png");
-```
-
-## Running tests
-
-```
-composer install
-vendor/bin/phpunit
-```
-
-### Integration tests
-
-```
-composer install
-TINIFY_KEY=$YOUR_API_KEY vendor/bin/phpunit --no-configuration test/integration.php
-```
-
-## License
-
-This software is licensed under the MIT License. [View the license](LICENSE).
+for get key go to the https://tinypng.com
