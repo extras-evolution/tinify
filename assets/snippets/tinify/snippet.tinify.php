@@ -66,12 +66,12 @@ if (!file_exists($outputFilename)) {
         $source = \Tinify\fromFile(MODX_BASE_PATH . $input);
         
         if ($params['w'] > 0 || $params['h'] > 0){
-        
+            //добавить проверку параметров от исходной картинки что б если что только оптимизировать 
             $params['m'] = isset($params['m']) ? $params['m']: 'cover';//scale / fit / cover 
             $resized = $source->resize(array(
                 "method" => $params['m'],
-                "width" => $params['w'],
-                "height" => $params['h']
+                "width" => intval($params['w']),
+                "height" => intval($params['h'])
             ));
             $resized->toFile($outputFilename);
         
