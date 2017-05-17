@@ -2,7 +2,11 @@
 if(!defined('MODX_BASE_PATH')){die('What are you doing? Get out of here!');}
 
 $key = isset($key) ? $key: ''; //get from tinypng.com
-if ($key == '') return 'set KEY from tinypng.com';
+if ($key == '') {
+    return $input;  
+    $modx->logEvent(0, 3, "set KEY from tinypng.com", 'tinify');
+}
+
 
 $newfolderaccessmode = $modx->config['new_folder_permissions'] ? octdec($modx->config['new_folder_permissions']) : 0777;
 
@@ -53,12 +57,12 @@ $fname = $path_parts['filename'];
 $fname_suffix = "-{$params['w']}x{$params['h']}-".substr(md5(serialize($params).filemtime(MODX_BASE_PATH . $input)),0,3).".{$params['f']}";
 $outputFilename = MODX_BASE_PATH.$fname_preffix.$fname.$fname_suffix;
 if (!file_exists($outputFilename)) {
-    require_once(MODX_BASE_PATH."assets/snippets/phpthumb/lib/Tinify/Exception.php");
-    require_once(MODX_BASE_PATH."assets/snippets/phpthumb/lib/Tinify/ResultMeta.php");
-    require_once(MODX_BASE_PATH."assets/snippets/phpthumb/lib/Tinify/Result.php");
-    require_once(MODX_BASE_PATH."assets/snippets/phpthumb/lib/Tinify/Source.php");
-    require_once(MODX_BASE_PATH."assets/snippets/phpthumb/lib/Tinify/Client.php");
-    require_once(MODX_BASE_PATH."assets/snippets/phpthumb/lib/Tinify.php");
+    require_once(MODX_BASE_PATH."assets/snippets/tinify/lib/Tinify/Exception.php");
+    require_once(MODX_BASE_PATH."assets/snippets/tinify/lib/Tinify/ResultMeta.php");
+    require_once(MODX_BASE_PATH."assets/snippets/tinify/lib/Tinify/Result.php");
+    require_once(MODX_BASE_PATH."assets/snippets/tinify/lib/Tinify/Source.php");
+    require_once(MODX_BASE_PATH."assets/snippets/tinify/lib/Tinify/Client.php");
+    require_once(MODX_BASE_PATH."assets/snippets/tinify/lib/Tinify.php");
 
     try {
         // Use the Tinify API client.
