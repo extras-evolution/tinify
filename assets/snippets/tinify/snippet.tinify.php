@@ -7,6 +7,10 @@ if ($key == '') {
     $modx->logEvent(0, 3, "set KEY from tinypng.com", 'tinify');
 }
 
+$keys = explode(',', $key);
+$keys = array_rand($keys, 1);
+$key =  $keys[$keys[0]];
+
 
 $newfolderaccessmode = $modx->config['new_folder_permissions'] ? octdec($modx->config['new_folder_permissions']) : 0777;
 
