@@ -1,4 +1,4 @@
-[[tinify? &input=`[+image+]` &options=`w=150,h=76,m=cover`]] 
+[[tinify? &input=`[+image+]` &options=`w=150,h=76,m=cover` &key=`key from https://tinypng.com`]] 
 
 The method(m) describes the way your image will be resized. The following methods are available:
 
