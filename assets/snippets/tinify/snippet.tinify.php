@@ -8,8 +8,10 @@ if ($key == '') {
 }
 
 $keys = explode(',', $key);
-$keys = array_rand($keys, 1);
-$key =  $keys[$keys[0]];
+if (count($keys)>1){
+    $keys = array_rand($keys, 1);
+    $key =  $keys[$keys[0]];
+}
 
 
 $newfolderaccessmode = $modx->config['new_folder_permissions'] ? octdec($modx->config['new_folder_permissions']) : 0777;
