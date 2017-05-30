@@ -3,14 +3,14 @@ if(!defined('MODX_BASE_PATH')){die('What are you doing? Get out of here!');}
 
 $key = isset($key) ? $key: ''; //get from tinypng.com
 if ($key == '') {
-    return $input;  
     $modx->logEvent(0, 3, "set KEY from tinypng.com", 'tinify');
+    return $input;  
 }
 
 $keys = explode(',', $key);
 if (count($keys)>1){
-    $keys = array_rand($keys, 1);
-    $key =  $keys[$keys[0]];
+    shuffle($keys);
+    $key =  $keys[0];
 }
 
 
